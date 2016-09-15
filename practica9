@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <math.h>
+char may(char s){
+    char temp ;
+    temp = s + 32;
+    printf("%c", temp);
+    return temp;
+}
+int strindex(char t, char s []){
+    int pos = -1;
+    int i= 0;
+    while(s[i] != '\0'){
+        if(s[i] == t){
+            pos = i;
+        }
+        ++i;
+    }
+
+    return pos;
+
+}
+
+float notc(char s []){
+    int i = 0, j = 0, t= 0;
+    float res = 0;
+    float dec = 0;
+    while(s[i]!='.')
+        ++i;
+    while(s[j]!='e')
+        ++j;
+    while(t< i){
+        if(s[t]>='0' && s[t] <= '9'){
+            res += (s[t]-'0')* pow(10,(i-t-1));
+        }
+        ++t;
+    }
+    t = i +1;
+    int h = 0;
+    while(t< j){
+        if(s[t]>='0' && s[t] <= '9'){
+            dec += (s[t]-'0')/ pow(10,(h+1));
+        }
+        ++t;
+        ++h;
+    }
+    res += dec;
+    int p = 1, rp = 0, x = 0;
+    if(s[j+1] == '-'){
+        p = -1;
+        j += 1;
+    }
+    while(s[x]!='\0')
+        ++x;
+    while(j < x){
+        if(s[j]>='0' && s[j] <= '9'){
+            rp += (s[j]-'0') * pow(10,x-j-1);
+        }
+        ++j;
+    }
+    rp = rp * p;
+
+    res = res * pow(10,rp);
+
+
+    return res;
+}
+char stv(char s[],int c, int t){
+
+    char temp ;
+    if (t <= c)
+        return s;
+    else{
+
+        temp = s[c];
+        s[c]=s[t];
+        s[t] = temp;
+        return (s,c+1,t-1);
+    }
+
+}
+char vuel(char s[]){
+    int x = 0;
+    while(s[x]!='\0')
+        ++x;
+    x = x-1;
+    printf("%d",x);
+    return stv(s,0,x);
+}
+
+
+main(){
+    char MA = 'T';
+    //may(MA);
+    //printf("%d \n",strindex('o',"como estas"));
+   // printf("%.8f",notc("124.56e-6"));
+    printf("%s",stv("hola",0,3));
+
+}
