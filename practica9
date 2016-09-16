@@ -64,27 +64,26 @@ float notc(char s []){
 
     return res;
 }
-char stv(char s[],int c, int t){
+
+void stv(char s[],int c, int t){
 
     char temp ;
-    if (t <= c)
-        return s;
-    else{
+    if (t<=c)
+        return;
 
+    if (t > c)
         temp = s[c];
         s[c]=s[t];
         s[t] = temp;
-        return (s,c+1,t-1);
-    }
 
-}
-char vuel(char s[]){
-    int x = 0;
-    while(s[x]!='\0')
-        ++x;
-    x = x-1;
-    printf("%d",x);
-    return stv(s,0,x);
+        stv(s,c+1,t-1);
+    }
+void vuelta(char s[]){
+    int i= 0;
+    while(s[i] != '\0'){
+        ++i;
+    }
+    stv(s,0,i-1);
 }
 
 
@@ -93,6 +92,8 @@ main(){
     //may(MA);
     //printf("%d \n",strindex('o',"como estas"));
    // printf("%.8f",notc("124.56e-6"));
-    printf("%s",stv("hola",0,3));
+    char s[10]= "hola";
+    vuelta(s);
+    printf("%s",s);
 
 }
