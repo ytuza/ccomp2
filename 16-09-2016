@@ -1,0 +1,59 @@
+#include<stdio.h>
+
+char minm(char c){
+    char *p ;
+    p = &c;
+    printf("%c \n",*p)   ;
+    *p = *p - 32;
+
+    printf("%c \n", *p)   ;
+}
+ void atrcat(char a[], char b[]){
+    char *y,*z;
+    y = &a[0];
+    z = &b[0];
+    printf("%d \n",y);
+    while (*y != '\0')
+        ++y;
+
+    while (*z != '\0'){
+        *y = *z;
+        ++y;
+        ++z;
+
+    }
+ }
+int strend(char s[],char t[]){
+    char *p;
+    p = &s[0];
+    char *pr;
+    pr = &t[0];
+
+    while(*p != '\0')
+        p++;
+    while(*pr != '\0')
+        pr++;
+    while(*pr != t[0]){
+        if(*pr != * p)
+            return 0;
+        pr -= 1;
+        p -= 1;
+    }
+    if(*pr != * p)
+        return 0;
+
+
+    return 1;
+
+}
+
+
+main(){
+    char a[10] = "hola fcomo";
+    char b[10] = "como";
+    //minm('h');
+    //atrcat(a,b);
+    //printf("%s",a);
+    printf("%d",strend(a,b));
+
+}
