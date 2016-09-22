@@ -1,0 +1,56 @@
+#include<stdio.h>
+
+void minm(char *c){
+
+    *c = *c - 32;
+}
+ void atrcat(char *a, char *b){
+
+    printf("%d \n",a);
+    while (*a != '\0')
+        ++a;
+
+    while (*b != '\0'){
+        *a = *b;
+        ++a;
+        ++b;
+
+    }
+ }
+
+int strend2(char *a,char *b){
+    int t = 0;
+    while(*b != '\0'){
+        t++;
+        b++;
+    }
+    while(*a != '\0')
+        a++;
+    a--;
+    b--;
+
+    for(t;t > 0;t--){
+        if(*a != *b)
+            return 0;
+
+        a--;
+        b--;
+
+
+    }
+    return 1;
+
+}
+
+
+
+
+main(){
+    char a[12] = "hola fcomo";
+    char b[12] = "como";
+
+    //atrcat(a,b);
+    //printf("%s",a);
+    //printf("el resultado %d",strend2(a,b));
+
+}
