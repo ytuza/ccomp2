@@ -1,0 +1,115 @@
+#include<stdio.h>
+
+void minm(char *c){
+
+    *c = *c - 32;
+}
+ void atrcat(char *a, char *b){
+
+    printf("%d \n",a);
+    while (*a != '\0')
+        ++a;
+
+    while (*b != '\0'){
+        *a = *b;
+        ++a;
+        ++b;
+
+    }
+ }
+
+int strend2(char *a,char *b){
+    int t = 0;
+    while(*b != '\0'){
+        t++;
+        b++;
+    }
+    while(*a != '\0')
+        a++;
+    a--;
+    b--;
+
+    for(t;t > 0;t--){
+        if(*a != *b)
+            return 0;
+
+        a--;
+        b--;
+    }
+    return 1;
+}
+
+char *strncpy(char *s1,char *s2, int n)
+{
+char *s = s1;
+while (n > 0 && *s2 != '\0') {
+*s++ = *s2++;
+--n;
+}
+while (n > 0) {
+*s++ = '\0';
+--n;
+}
+return s1;
+}
+
+char *strncat(char *s1, char *s2, int n){
+    char *s = s1;
+    while(*s++ != '\0');
+
+    s--;
+    printf("%c \n",*s2);
+
+    while (n>0 && *s2 != '\0'){
+        *s++=*s2++;
+        --n;
+
+    }
+    while (n > 0) {
+    *s++ = '\0';
+    --n;
+    }
+
+    return s1;
+
+}
+
+int strncmp(char *s1, char *s2, int n){
+    while (n>0){
+        if (*s1 != *s2){
+            return *s1 - *s2;
+        }
+        s1++;
+        s2++;
+        n--;
+    }
+    return 0;
+}
+
+char *getline(char *s,int lim){
+    char  c;
+    int i;
+    for (i = 0; i < lim-1 && (c = getchar()) != EOF && c != '\n'; ++i){
+        *p =c;
+        p++;
+    }
+    if (c == '\n'){
+        *p = c;
+        p++;
+    }
+    *p = '\0';
+    return s;
+
+}
+
+
+main(){
+    char a[];
+
+    //atrcat(a,b);
+    //printf("%s",a);
+    //printf("el resultado %d",strend2(a,b));
+
+    printf("%s",getline(a,100));
+
+}
